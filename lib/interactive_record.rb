@@ -52,7 +52,8 @@ class InteractiveRecord
     end 
 
     def self.find_by(x)
-        a = DB[:conn].execute("SELECT * FROM #{self.table_name} VALUES #{x}")
-        binding.pry
+        key = x.keys[0].to_s
+        value = x.values[0]
+        DB[:conn].execute("SELECT * FROM #{self.table_name} WHERE #{key} = ?", [value])
     end 
 end
