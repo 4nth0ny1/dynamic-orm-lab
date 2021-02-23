@@ -48,12 +48,12 @@ class InteractiveRecord
     end 
 
     def self.find_by_name(name)
-        DB[:conn].execute("SELECT * FROM #{self.table_name} WHERE name = ?", [name])
+        DB[:conn].execute("SELECT * FROM #{self.table_name} WHERE name = '#{name}'")
     end 
 
     def self.find_by(x)
         key = x.keys[0].to_s
         value = x.values[0]
-        DB[:conn].execute("SELECT * FROM #{self.table_name} WHERE #{key} = ?", [value])
+        DB[:conn].execute("SELECT * FROM #{self.table_name} WHERE #{key} = '#{value}'")
     end 
 end
